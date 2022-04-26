@@ -29,6 +29,7 @@ function whatsTheWeather(response) {
   let temp = document.querySelector("#temp-now");
   headerElement.innerHTML = response.data.name;
   temp.innerHTML = `${roundedTemp}°`;
+  console.log(response.data);
 }
 
 function search(inputCity) {
@@ -42,8 +43,6 @@ function submitCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#city-input");
   inputCity.innerHTML = `${inputCity.value}`;
-  // let headerElement = document.querySelector("#city-display");
-  // headerElement.innerHTML = `${currentCity.value}`;
   search(inputCity.value);
 }
 

@@ -23,10 +23,12 @@ h1 {
 
 a {
   color: #65b5c0;
+  text-decoration: none;
 }
 
 a:hover {
   color: #3f3d56;
+  font-style: italic;
 }
 
 ul {
@@ -117,4 +119,8 @@ p {
   padding: 20px 20px;
   margin: 27px auto;
   max-width: 800px;
+}
+
+#footer {
+  text-align: center;
 }
