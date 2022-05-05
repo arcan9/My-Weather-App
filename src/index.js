@@ -27,8 +27,15 @@ function whatsTheWeather(response) {
   let headerElement = document.querySelector("#city-display");
   let roundedTemp = Math.round(response.data.main.temp);
   let temp = document.querySelector("#temp-now");
+  let iconElement = document.querySelector(".icon-weather-main");
+
   headerElement.innerHTML = response.data.name;
   temp.innerHTML = `${roundedTemp}°`;
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   console.log(response.data);
 }
 
