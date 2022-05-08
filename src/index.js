@@ -26,10 +26,12 @@ currentTime.innerHTML = `${hour}:${minutes}`;
 function whatsTheWeather(response) {
   cTemp = response.data.main.temp;
 
-  let headerElement = document.querySelector("#city-display");
   let roundedTemp = Math.round(cTemp);
+  let headerElement = document.querySelector("#city-display");
   let temp = document.querySelector("#temp-now");
   let iconElement = document.querySelector(".icon-weather-main");
+  let humidityElement = document.querySelector("#hum");
+  let windElement = document.querySelector("#wind");
 
   headerElement.innerHTML = response.data.name;
   temp.innerHTML = `${roundedTemp}°`;
@@ -38,6 +40,8 @@ function whatsTheWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.wind.speed);
   console.log(response.data);
 }
 
@@ -51,6 +55,10 @@ function search(inputCity) {
 function submitCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#city-input");
+
+  fLink.classList.remove("active-link");
+  cLink.classList.add("active-link");
+
   inputCity.innerHTML = `${inputCity.value}`;
   search(inputCity.value);
 }
