@@ -67,6 +67,15 @@ p {
   text-align: right;
 }
 
+.active-link {
+  color: #3f3d56;
+  cursor: default;
+}
+
+.active-link:hover {
+  font-style: normal;
+}
+
 .card {
   border: 0;
 }

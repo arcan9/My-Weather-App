@@ -24,8 +24,10 @@ currentTime.innerHTML = `${hour}:${minutes}`;
 //challenge 2, Replace city name with the input
 
 function whatsTheWeather(response) {
+  cTemp = response.data.main.temp;
+
   let headerElement = document.querySelector("#city-display");
-  let roundedTemp = Math.round(response.data.main.temp);
+  let roundedTemp = Math.round(cTemp);
   let temp = document.querySelector("#temp-now");
   let iconElement = document.querySelector(".icon-weather-main");
 
@@ -58,21 +60,36 @@ getWeather.addEventListener("submit", submitCity);
 
 //challenge 3 celsius to fahrenheit and vice versa
 
-// function convertToCelcius() {
-//   let temp = document.querySelector("#temp-now");
-//   temp.innerHTML = "19°";
-// }
+function convertToCelcius(event) {
+  event.preventDefault();
+  let temp = document.querySelector("#temp-now");
 
-// let cTemp = document.querySelector("#celcius");
-// cTemp.addEventListener("click", convertToCelcius);
+  // remove the active class of fahrenheit link
+  // add the active class to celsius link
+  fLink.classList.remove("active-link");
+  cLink.classList.add("active-link");
 
-// function convertToFahrenheit() {
-//   let temp = document.querySelector("#temp-now");
-//   temp.innerHTML = "67°";
-// }
+  temp.innerHTML = Math.round(cTemp) + "°";
+}
 
-// let fTemp = document.querySelector("#fahrenheit");
-// fTemp.addEventListener("click", convertToFahrenheit);
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let fahrenheitNow = Math.round((cTemp * 9) / 5 + 32);
+
+  // remove the active class of celsius link
+  // add the active class to fahrenheit link
+  cLink.classList.remove("active-link");
+  fLink.classList.add("active-link");
+
+  let temp = document.querySelector("#temp-now");
+  temp.innerHTML = `${fahrenheitNow}°`;
+}
+
+let cLink = document.querySelector("#celcius");
+cLink.addEventListener("click", convertToCelcius);
+
+let fLink = document.querySelector("#fahrenheit");
+fLink.addEventListener("click", convertToFahrenheit);
 
 function showMyCoords(position) {
   let lat = position.coords.latitude;
@@ -88,7 +105,10 @@ function getCurrentPosition(event) {
   navigator.geolocation.getCurrentPosition(showMyCoords);
 }
 
+let cTemp = null;
+
 let button = document.querySelector("#location-button");
 button.addEventListener("click", getCurrentPosition);
 
+// default city
 search("Los Angeles");
