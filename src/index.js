@@ -1,27 +1,6 @@
-//challenge 1, Add current time
-let now = new Date();
-
-let hour = now.getHours();
-let minutes = now.getMinutes();
-
-if (hour < 10) {
-  hour = `0${hour}`;
-}
-
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-
-//create array here
-let daysOfTheWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-let day = daysOfTheWeek[now.getDay()];
-
-let currentDay = document.querySelector("#day-now");
-let currentTime = document.querySelector(".time-now");
-currentDay.innerHTML = `${day}`;
-currentTime.innerHTML = `${hour}:${minutes}`;
-
-//challenge 2, Replace city name with the input
+// Replace city name with the input
+// API icon implementation
+// humidity and wind
 
 function whatsTheWeather(response) {
   cTemp = response.data.main.temp;
@@ -63,10 +42,7 @@ function submitCity(event) {
   search(inputCity.value);
 }
 
-let getWeather = document.querySelector("#search-form");
-getWeather.addEventListener("submit", submitCity);
-
-//challenge 3 celsius to fahrenheit and vice versa
+// celsius to fahrenheit and vice versa
 
 function convertToCelcius(event) {
   event.preventDefault();
@@ -93,12 +69,6 @@ function convertToFahrenheit(event) {
   temp.innerHTML = `${fahrenheitNow}°`;
 }
 
-let cLink = document.querySelector("#celcius");
-cLink.addEventListener("click", convertToCelcius);
-
-let fLink = document.querySelector("#fahrenheit");
-fLink.addEventListener("click", convertToFahrenheit);
-
 function showMyCoords(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
@@ -113,10 +83,44 @@ function getCurrentPosition(event) {
   navigator.geolocation.getCurrentPosition(showMyCoords);
 }
 
+//////////////
+
+// ɢᴇᴛ ᴛɪᴍᴇ
+
+let now = new Date();
+
+let hour = now.getHours();
+let minutes = now.getMinutes();
+
+if (hour < 10) {
+  hour = `0${hour}`;
+}
+
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
+
+let daysOfTheWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+let day = daysOfTheWeek[now.getDay()];
+
+let currentDay = document.querySelector("#day-now");
+let currentTime = document.querySelector(".time-now");
+currentDay.innerHTML = `${day}`;
+currentTime.innerHTML = `${hour}:${minutes}`;
+
 let cTemp = null;
+
+let getWeather = document.querySelector("#search-form");
+getWeather.addEventListener("submit", submitCity);
+
+let cLink = document.querySelector("#celcius");
+cLink.addEventListener("click", convertToCelcius);
+
+let fLink = document.querySelector("#fahrenheit");
+fLink.addEventListener("click", convertToFahrenheit);
 
 let button = document.querySelector("#location-button");
 button.addEventListener("click", getCurrentPosition);
 
-// default city
+// 🇩​​​​​🇪​​​​​🇫​​​​​🇦​​​​​🇺​​​​​🇱​​​​​🇹​​​​​ 🇨​​​​​🇮​​​​​🇹​​​​​🇾​​​​​
 search("Los Angeles");
