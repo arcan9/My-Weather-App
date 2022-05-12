@@ -117,9 +117,14 @@ p {
   color: #5eb5c073;
 }
 
-.week-temperature {
+.week-temperature-max {
   font-size: 22px;
   color: #3f3d56;
+}
+
+.week-temperature-min {
+  font-size: 22px;
+  color: #2834558c;
 }
 
 .weatherapp {
