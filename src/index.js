@@ -2,6 +2,28 @@
 // API icon implementation
 // humidity and wind
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  days.forEach(function (day) {
+    forecastHTML += `
+          <div class="col-3 text-center">
+            <img src="http://openweathermap.org/img/wn/10d@2x.png" />
+            <br />
+            <span class="week-temperature-max">75°</span>  
+            <span class="week-temperature-min">70°</span>
+            <br />
+            <span class="days">${day}</span>
+          </div>`;
+  });
+
+  forecastHTML += `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function whatsTheWeather(response) {
   cTemp = response.data.main.temp;
 
@@ -124,3 +146,4 @@ button.addEventListener("click", getCurrentPosition);
 
 // 🇩​​​​​🇪​​​​​🇫​​​​​🇦​​​​​🇺​​​​​🇱​​​​​🇹​​​​​ 🇨​​​​​🇮​​​​​🇹​​​​​🇾​​​​​
 search("Los Angeles");
+displayForecast();
