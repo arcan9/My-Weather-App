@@ -2,11 +2,13 @@
 // API icon implementation
 // humidity and wind
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
-  let forecastHTML = `<div class="row">`;
   let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
 
   days.forEach(function (day) {
     forecastHTML += `
@@ -22,6 +24,16 @@ function displayForecast() {
 
   forecastHTML += `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+// get coords of the input city
+// One Call API
+
+function getForecast(coordinates) {
+  let apiKey = "7e77d603761c561231a7adb4e10379dd";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function whatsTheWeather(response) {
@@ -43,7 +55,8 @@ function whatsTheWeather(response) {
   iconElement.setAttribute("alt", response.data.weather[0].description);
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
-  console.log(response.data);
+
+  getForecast(response.data.coord);
 }
 
 function search(inputCity) {
@@ -57,11 +70,11 @@ function submitCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#city-input");
 
-  fLink.classList.remove("active-link");
-  cLink.classList.add("active-link");
-
   inputCity.innerHTML = `${inputCity.value}`;
   search(inputCity.value);
+
+  fLink.classList.remove("active-link");
+  cLink.classList.add("active-link");
 }
 
 // celsius to fahrenheit and vice versa
@@ -103,6 +116,9 @@ function showMyCoords(position) {
 function getCurrentPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showMyCoords);
+
+  fLink.classList.remove("active-link");
+  cLink.classList.add("active-link");
 }
 
 //////////////
@@ -146,4 +162,4 @@ button.addEventListener("click", getCurrentPosition);
 
 // 🇩​​​​​🇪​​​​​🇫​​​​​🇦​​​​​🇺​​​​​🇱​​​​​🇹​​​​​ 🇨​​​​​🇮​​​​​🇹​​​​​🇾​​​​​
 search("Los Angeles");
-displayForecast();
+// displayForecast();
