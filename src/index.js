@@ -2,24 +2,42 @@
 // API icon implementation
 // humidity and wind
 
-function displayForecast(response) {
-  console.log(response.data.daily);
-  let forecastElement = document.querySelector("#forecast");
+function translateDay(timestamp) {
+  let date = new Date(timestamp * 1000);
 
-  let days = ["Thu", "Fri", "Sat", "Sun"];
+  let daysOfTheWeek = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+
+  return daysOfTheWeek[date.getDay()];
+}
+
+// display weather for upcoming days
+// using retrieved coordinates from API
+function displayForecast(response) {
+  console.log(response.data);
+  let dailyForecast = response.data.daily;
+
+  let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
 
-  days.forEach(function (day) {
-    forecastHTML += `
-          <div class="col-3 text-center">
-            <img src="http://openweathermap.org/img/wn/10d@2x.png" />
+  dailyForecast.forEach(function (day, index) {
+    if (index < 6) {
+      forecastHTML += `
+          <div class="col-4 text-center">
+            <img src="http://openweathermap.org/img/wn/${
+              day.weather[0].icon
+            }@2x.png" />
             <br />
-            <span class="week-temperature-max">75°</span>  
-            <span class="week-temperature-min">70°</span>
+            <span class="week-temperature-max">${Math.round(
+              day.temp.max
+            )}°</span>  
+            <span class="week-temperature-min">${Math.round(
+              day.temp.min
+            )}°</span>
             <br />
-            <span class="days">${day}</span>
+            <span class="days">${translateDay(day.dt)}</span>
           </div>`;
+    }
   });
 
   forecastHTML += `</div>`;
