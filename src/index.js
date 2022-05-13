@@ -46,7 +46,6 @@ function displayForecast(response) {
 
 // get coords of the input city
 // One Call API
-
 function getForecast(coordinates) {
   let apiKey = "7e77d603761c561231a7adb4e10379dd";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
@@ -61,6 +60,7 @@ function whatsTheWeather(response) {
   let headerElement = document.querySelector("#city-display");
   let temp = document.querySelector("#temp-now");
   let iconElement = document.querySelector(".icon-weather-main");
+  let descriptionElement = document.querySelector("#description");
   let humidityElement = document.querySelector("#hum");
   let windElement = document.querySelector("#wind");
 
@@ -71,6 +71,7 @@ function whatsTheWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+  descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
   windElement.innerHTML = Math.round(response.data.wind.speed);
 
