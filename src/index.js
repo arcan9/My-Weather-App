@@ -144,26 +144,40 @@ function getCurrentPosition(event) {
 
 // ɢᴇᴛ ᴛɪᴍᴇ
 
-let now = new Date();
+function whatTimeIsIt() {
+  let now = new Date();
 
-let hour = now.getHours();
-let minutes = now.getMinutes();
+  let hour = now.getHours();
+  let minutes = now.getMinutes();
+  let timeDay = "AM";
 
-if (hour < 10) {
-  hour = `0${hour}`;
+  if (hour == 0) {
+    hour = 12;
+  }
+
+  if (hour > 12) {
+    hour -= 12;
+    timeDay = "PM";
+  }
+
+  if (hour < 10 || hour > 12) {
+    hour = `0${hour}`;
+  }
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let daysOfTheWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  let day = daysOfTheWeek[now.getDay()];
+
+  let currentDay = document.querySelector("#day-now");
+  let currentTime = document.querySelector(".time-now");
+  currentDay.innerHTML = `${day}`;
+  currentTime.innerHTML = `${hour}:${minutes} ${timeDay}`;
 }
 
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-
-let daysOfTheWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
-let day = daysOfTheWeek[now.getDay()];
-
-let currentDay = document.querySelector("#day-now");
-let currentTime = document.querySelector(".time-now");
-currentDay.innerHTML = `${day}`;
-currentTime.innerHTML = `${hour}:${minutes}`;
+whatTimeIsIt();
 
 let cTemp = null;
 
