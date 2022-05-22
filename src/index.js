@@ -10,6 +10,7 @@ function translateDay(timestamp) {
   return daysOfTheWeek[date.getDay()];
 }
 
+// F O R E C A S T
 // display weather for upcoming days
 // using retrieved coordinates from API
 function displayForecast(response) {
