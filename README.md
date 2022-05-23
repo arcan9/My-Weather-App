@@ -2,7 +2,7 @@
 
 A simple weather app using the Open Weather API
 
-Live: https://bucolic-dieffenbachia-5067b0.netlify.app/
+Live: https://weatherapp-arcan.netlify.app/
 
 <img src="https://github.com/arcan9/My-Weather-App/blob/main/images/weather-app-capture.PNG" width="500">
 
