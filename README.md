@@ -18,6 +18,10 @@ Starting off with HTML and CSS: I first plugged in all the required information 
 
 Next was Javascript, using time and day retrieval methods to get the current time. Stored the API key and URL in the code and have axios access the features of the Open Weather API to retrieve weather conditions using city coordinates and geolocation. Default location is Los Angeles. Default temperature is shown as celsius but a function in the code allows for fahrenheit conversion, which the user can do with one click.
 
+# Optimizations
+
+The site isn't responsive and I would need the time to reorarganize the layout. Perhaps use a framework like flexbox and use media queries to optimize for tablets and phones. Currently this is still in progress. Additionally, implemenentaion of API needs to be improved. An option would be to place it in an .env file.
+
 # What I learned
 
 I learned that almost everything can be a function! While the code itself might not be as "clean" as it could be, refactoring things into functions or even leaving comments really helped me to stay organized and make the code more readable. I learned about API integration, the use of axios library, and that it's possible to insert HTML into Javascipt. I learned how to access certain information from the object in the API URL, 
