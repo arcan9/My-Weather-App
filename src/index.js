@@ -45,8 +45,8 @@ function displayForecast(response) {
   forecastElement.innerHTML = forecastHTML;
 }
 
-// get coords of the input city
-// One Call API
+// get coords of the user-submitted city
+// One Call API to get data
 function getForecast(coordinates) {
   let apiKey = "7e77d603761c561231a7adb4e10379dd";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
@@ -54,6 +54,8 @@ function getForecast(coordinates) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+// Information of user-submitted city is displayed on page
+// including icon, description, speed, and humidity
 function whatsTheWeather(response) {
   cTemp = response.data.main.temp;
 
@@ -79,6 +81,7 @@ function whatsTheWeather(response) {
   getForecast(response.data.coord);
 }
 
+// Data for user-submitted city is retrieved from API
 function search(inputCity) {
   let apiKey = "7e77d603761c561231a7adb4e10379dd";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=${apiKey}&units=metric`;
@@ -86,6 +89,8 @@ function search(inputCity) {
   axios.get(apiUrl).then(whatsTheWeather);
 }
 
+// User submits their a city
+// Replace DOM with submitted city
 function submitCity(event) {
   event.preventDefault();
   let inputCity = document.querySelector("#city-input");
