@@ -2,7 +2,7 @@
 
 A simple weather app using the Open Weather API
 
-Live: https://bucolic-dieffenbachia-5067b0.netlify.app/
+Live: https://weatherapp-arcan.netlify.app/
 
 <img src="https://github.com/arcan9/My-Weather-App/blob/main/images/weather-app-capture.PNG" width="500">
 
@@ -17,6 +17,10 @@ Dependencies: Axios library (make http request to interact with API)
 Starting off with HTML and CSS: I first plugged in all the required information like the current day and weather, time, as well as the upcoming forecast. In the beginning these were all placeholder information, just enough to visual how everything is organized in the app's layout. Bootstrap helped with this, making it easier to insert cards and tables for the data, and work with buttons already setup by Bootstrap.
 
 Next was Javascript, using time and day retrieval methods to get the current time. Stored the API key and URL in the code and have axios access the features of the Open Weather API to retrieve weather conditions using city coordinates and geolocation. Default location is Los Angeles. Default temperature is shown as celsius but a function in the code allows for fahrenheit conversion, which the user can do with one click.
+
+# Optimizations
+
+The site isn't responsive and I would need the time to reorarganize the layout. Perhaps use a framework like flexbox and use media queries to optimize for tablets and phones. Currently this is still in progress. Additionally, implemenentaion of API needs to be improved. An option would be to place it in an .env file.
 
 # What I learned
 
