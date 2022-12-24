@@ -20,7 +20,7 @@ Next was Javascript, using time and day retrieval methods to get the current tim
 
 # Optimizations
 
-The site isn't responsive and I would need the time to reorarganize the layout. Perhaps use a framework like flexbox and use media queries to optimize for tablets and phones. Currently this is still in progress. Additionally, implemenentaion of API needs to be improved. An option would be to place it in an .env file.
+The site isn't responsive and I would need the time to reorarganize the layout. Perhaps use flexbox and media queries to optimize for tablets and phones. Currently this is still in progress. Additionally, implemenentaion of API needs to be improved. An option would be to place it in an .env file.
 
 # What I learned
 
